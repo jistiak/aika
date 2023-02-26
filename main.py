@@ -5,7 +5,9 @@ import csv
 import json
 
 
-st.title("AI Cook")
+st.image("./sample data/dalle_cover_lynx.png", use_column_width=True)
+
+st.title("AI Chef")
 st.markdown('')
 
 
