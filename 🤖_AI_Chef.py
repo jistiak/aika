@@ -100,7 +100,7 @@ cook = st.sidebar.button('Give me something to Cook!', key='cook')
 
 if cook:
     raw_output = recipe_generator(data, cuisine, nutrition, portion, prep_time)
-    recipe = raw_output['choices'][0]['text']
+    recipe = json.loads(raw_output['choices'][0]['text'])
 
     for user in recipe.keys():
 
