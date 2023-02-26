@@ -131,7 +131,12 @@ if cook:
                 st.markdown(f"{ing_pretty}\n")
 
                 st.subheader("Cooking Steps:\n")
-                st.markdown(f"{recipe[user]['cooking_steps']}\n")
+
+                steps_pretty = ""
+                for step in recipe[user]['cooking_steps']:
+                    steps_pretty += f"- {step}\n"
+
+                st.markdown(f"{steps_pretty}\n")
 
             except:
                 st.text(recipe)
