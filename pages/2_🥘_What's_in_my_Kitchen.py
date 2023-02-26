@@ -6,7 +6,6 @@ st.set_page_config(page_title="What's in my Kitchen?", page_icon="🥘")
 
 st.title("🥘 What's in my Kitchen?")
 
-
 with open('sample data/grocery_file.json') as f:
     # Load the contents into a variable
     data = json.load(f)
