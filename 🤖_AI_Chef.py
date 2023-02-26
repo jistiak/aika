@@ -88,7 +88,7 @@ def recipe_generator(data, cuisine, nutrition, portion, prep_time):
         model="text-davinci-003",
         prompt=f"Create a recipe and cooking steps based on the items in this json file {data} in {cuisine} cuisine style, with {nutrition} nutrition target in mind. The recipe should be for {portion} persons, only one portion per person and within {prep_time} minutes of preparation and cooking time. Don't use all the ingredients and use the best possible combination economically. give the oil, spices, salt or chillies in minimal amount. provide the total calorie count of the meal. the output should be a nested json format data. the {user_id} is level one, nested inside should be recipe name, nested inside should be ingredients, cooking step and calorie count. within ingredients there should be nested quantity and unit keys.",
         temperature=0.7,
-        max_tokens=512,
+        max_tokens=700,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0
@@ -99,8 +99,23 @@ def recipe_generator(data, cuisine, nutrition, portion, prep_time):
 cook = st.sidebar.button('Give me something to Cook!', key='cook')
 
 if cook:
-    recipe = recipe_generator(data, cuisine, nutrition, portion, prep_time)
-    st.write(recipe['choices'][0]['text'])
+    raw_output = recipe_generator(data, cuisine, nutrition, portion, prep_time)
+    recipe = raw_output['choices'][0]['text']
+
+    st.subheader(f"Recipe Name: {recipe[{user_id}]['recipe']}")
+    st.markdown(f"Calorie Count: {recipe[{user_id}]['calorie count']}\n")
+
+    st.subheader("Ingredients:\n")
+
+    ingredients = f"{recipe[{user_id}]['ingredients']}"
+
+    ing_pretty = "\n".join(
+        [f"- {k}: {v['quantity']} {v['unit']}" if 'unit' in v else f"- {k}: {v}" for k, v in ingredients.items()])
+
+    st.markdown(f"{ing_pretty}\n")
+
+    st.subheader("Cooking Steps:\n")
+    st.markdown(f"{recipe[{user_id}]['cooking steps']}\n")
 
     with open("./assets/response_dump.txt", "a") as file:
         file.write(
