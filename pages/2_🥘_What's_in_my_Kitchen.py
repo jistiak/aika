@@ -45,3 +45,5 @@ for key, value in data.items():
         df = pd.concat([df, temp_df])
     else:
         pass
+
+st.dataframe(df)
