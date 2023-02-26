@@ -111,7 +111,7 @@ if cook:
 
         st.subheader("Ingredients:\n")
 
-        ingredients = f"{recipe[user]['ingredients']}"
+        ingredients = recipe[user]['ingredients']
 
         ing_pretty = "\n".join(
             [f"- {k}: {v['quantity']} {v['unit']}" if 'unit' in v else f"- {k}: {v}" for k, v in ingredients.items()])
