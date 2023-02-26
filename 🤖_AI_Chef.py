@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 import streamlit as st
 import os
 import openai
@@ -7,7 +8,6 @@ import pandas as pd
 import redis
 import hashlib
 import socket
-
 
 st.set_page_config(
     page_title="AI Chef",
@@ -25,10 +25,10 @@ def userid():
 
 user_id = userid()
 
-
-r_host = os.getenv('RD_HOST')
-r_port = os.getenv('RD_PORT')
-r_pass = os.getenv('RD_PASS')
+load_dotenv()
+r_host = os.environ.get('RD_HOST')
+r_port = os.environ.get('RD_PORT')
+r_pass = os.environ.get('RD_PASS')
 
 
 @st.cache_data

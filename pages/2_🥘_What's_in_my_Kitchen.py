@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 import streamlit as st
 import json
 import pandas as pd
@@ -9,9 +10,10 @@ st.set_page_config(page_title="What's in my Kitchen?", page_icon="🥘")
 
 st.title("🥘 What's in my Kitchen?")
 
-r_host = os.getenv('RD_HOST')
-r_port = os.getenv('RD_PORT')
-r_pass = os.getenv('RD_PASS')
+load_dotenv()
+r_host = os.environ.get('RD_HOST')
+r_port = os.environ.get('RD_PORT')
+r_pass = os.environ.get('RD_PASS')
 
 
 @st.cache_data
