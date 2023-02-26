@@ -1,2 +1,4 @@
 openai==0.26.5
+pandas==1.5.3
+redis==4.5.1
 streamlit==1.18.1
