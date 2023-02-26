@@ -3,13 +3,17 @@ import os
 import openai
 import csv
 import json
+import pandas as pd
+
+
+st.set_page_config(
+    page_title="AI Chef",
+    page_icon="🤖",
+)
 
 
 st.image("./sample data/dalle_cover_lynx.png", use_column_width=True)
-
-st.title("AI Chef")
-st.markdown('')
-
+st.title("🤖 AI Chef")
 
 OPENAI_API_KEY = st.sidebar.text_input('Your OpenAI API')
 
