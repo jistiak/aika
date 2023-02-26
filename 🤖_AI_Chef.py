@@ -102,21 +102,23 @@ if cook:
     raw_output = recipe_generator(data, cuisine, nutrition, portion, prep_time)
     recipe = raw_output['choices'][0]['text']
 
-    st.subheader(f"Recipe Name: {recipe[{user_id}]['recipe']}")
-    st.markdown(f"Calorie Count: {recipe[{user_id}]['calorie count']}\n")
+    for user in recipe.keys():
 
-    st.subheader("Ingredients:\n")
+        st.subheader(f"Recipe Name: {recipe[user]['recipe']}")
+        st.markdown(f"Calorie Count: {recipe[user]['calorie count']}\n")
 
-    ingredients = f"{recipe[{user_id}]['ingredients']}"
+        st.subheader("Ingredients:\n")
 
-    ing_pretty = "\n".join(
-        [f"- {k}: {v['quantity']} {v['unit']}" if 'unit' in v else f"- {k}: {v}" for k, v in ingredients.items()])
+        ingredients = f"{recipe[user]['ingredients']}"
 
-    st.markdown(f"{ing_pretty}\n")
+        ing_pretty = "\n".join(
+            [f"- {k}: {v['quantity']} {v['unit']}" if 'unit' in v else f"- {k}: {v}" for k, v in ingredients.items()])
 
-    st.subheader("Cooking Steps:\n")
-    st.markdown(f"{recipe[{user_id}]['cooking steps']}\n")
+        st.markdown(f"{ing_pretty}\n")
 
-    with open("./assets/response_dump.txt", "a") as file:
-        file.write(
-            f"Inputs:- Cuisine: {cuisine}, Nutrition: {nutrition}, Portion: {portion}, Prep_time: {prep_time}\nOutput:-\n{recipe}\n\n")
+        st.subheader("Cooking Steps:\n")
+        st.markdown(f"{recipe[user]['cooking steps']}\n")
+
+        with open("./assets/response_dump.txt", "a") as file:
+            file.write(
+                f"Inputs:- Cuisine: {cuisine}, Nutrition: {nutrition}, Portion: {portion}, Prep_time: {prep_time}\nOutput:-\n{recipe}\n\n")
