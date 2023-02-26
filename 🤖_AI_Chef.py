@@ -117,9 +117,9 @@ if cook:
         for user in recipe.keys():
 
             try:
-                st.subheader(f"Recipe Name: {recipe[user]['recipe']}")
+                st.subheader(f"Recipe Name: {recipe[user]['recipe_name']}")
                 st.markdown(
-                    f"Calorie Count: {recipe[user]['calorie count']}\n")
+                    f"Calorie Count: {recipe[user]['calorie_count']}\n")
 
                 st.subheader("Ingredients:\n")
 
@@ -131,9 +131,9 @@ if cook:
                 st.markdown(f"{ing_pretty}\n")
 
                 st.subheader("Cooking Steps:\n")
-                st.markdown(f"{recipe[user]['cooking steps']}\n")
+                st.markdown(f"{recipe[user]['cooking_steps']}\n")
 
             except:
-                st.json(recipe)
+                st.text(recipe)
     else:
         st.text(recipe)
