@@ -8,15 +8,23 @@ import redis
 import hashlib
 import socket
 
-ip_address = socket.gethostbyname(socket.gethostname())
-hash_object = hashlib.sha256(ip_address.encode())
-hex_dig = hash_object.hexdigest()
-user_id = hex_dig[:8]
-
 
 st.set_page_config(
     page_title="AI Chef",
     page_icon="🤖")
+
+
+@st.cache_data
+def userid():
+    ip_address = socket.gethostbyname(socket.gethostname())
+    hash_object = hashlib.sha256(ip_address.encode())
+    hex_dig = hash_object.hexdigest()
+    user_id = hex_dig[:8]
+    return user_id
+
+
+user_id = userid()
+
 
 r_host = os.getenv('RD_HOST')
 r_port = os.getenv('RD_PORT')
@@ -78,7 +86,7 @@ def recipe_generator(data, cuisine, nutrition, portion, prep_time):
     response = openai.Completion.create(
         # model="text-ada-001",
         model="text-davinci-003",
-        prompt=f"suggest a recipe and cooking steps based on the items in this json file {data} in {cuisine} cuisine style, with {nutrition} nutrition target in mind. The recipe should be for {portion} persons, only one portion per person and within {prep_time} minutes of preparation and cooking time. Don't use all the ingredients and use the best possible combination economically. give the oil, spices, salt or chillies in minimal amount. Also provide the total calorie count of the meal. the output should be a nested json format data. the user id, recipe name, ingredients, cooking step, calorie count all these should be keys, and the contents should be values.",
+        prompt=f"Create a recipe and cooking steps based on the items in this json file {data} in {cuisine} cuisine style, with {nutrition} nutrition target in mind. The recipe should be for {portion} persons, only one portion per person and within {prep_time} minutes of preparation and cooking time. Don't use all the ingredients and use the best possible combination economically. give the oil, spices, salt or chillies in minimal amount. provide the total calorie count of the meal. the output should be a nested json format data. the {user_id} is level one, nested inside should be recipe name, nested inside should be ingredients, cooking step and calorie count. within ingredients there should be nested quantity and unit keys.",
         temperature=0.7,
         max_tokens=512,
         top_p=1,
