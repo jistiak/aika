@@ -1,0 +1,170 @@
+[
+    {
+        "Rice": {
+            "quantity": "1",
+            "unit": "kilogram"
+        }
+    },
+    {
+        "Egg": {
+            "quantity": "10",
+            "unit": "Piece"
+        }
+    },
+    {
+        "Musli": {
+            "quantity": "1",
+            "unit": "kilogram"
+        }
+    },
+    {
+        "Durum": {
+            "quantity": "2",
+            "unit": "Packet"
+        }
+    },
+    {
+        "Chicken": {
+            "quantity": "1",
+            "unit": "kilogram"
+        }
+    },
+    {
+        "Tomato puree": {
+            "quantity": "1",
+            "unit": "kilogram"
+        }
+    },
+    {
+        "Mushroom": {
+            "quantity": "4",
+            "unit": "Cans"
+        }
+    },
+    {
+        "Kidney Beans": {
+            "quantity": "1",
+            "unit": "kilogram"
+        }
+    },
+    {
+        "Sugar": {
+            "quantity": "1",
+            "unit": "kilogram"
+        }
+    },
+    {
+        "Carrot": {
+            "quantity": "1",
+            "unit": "kilogram"
+        }
+    },
+    {
+        "Tomato": {
+            "quantity": "1",
+            "unit": "kilogram"
+        }
+    },
+    {
+        "Butter": {
+            "quantity": "500",
+            "unit": "gram"
+        }
+    },
+    {
+        "Milk": {
+            "quantity": "2",
+            "unit": "Packets"
+        }
+    },
+    {
+        "Cheese": {
+            "quantity": "500",
+            "unit": "gram"
+        }
+    },
+    {
+        "Potatoes ": {
+            "quantity": "2",
+            "unit": "kilogram"
+        }
+    },
+    {
+        "Onion": {
+            "quantity": "1",
+            "unit": "kilogram"
+        }
+    },
+    {
+        "Flour": {
+            "quantity": "500",
+            "unit": "gram"
+        }
+    },
+    {
+        "Salt": {
+            "quantity": "250",
+            "unit": "gram"
+        }
+    },
+    {
+        "Cooking Oil": {
+            "quantity": "500",
+            "unit": "mililitre"
+        }
+    },
+    {
+        "Chilli powder": {
+            "quantity": "100",
+            "unit": "gram"
+        }
+    },
+    {
+        "Turmeric powder": {
+            "quantity": "100",
+            "unit": "gram"
+        }
+    },
+    {
+        "Garam Masala": {
+            "quantity": "100",
+            "unit": "gram"
+        }
+    },
+    {
+        "Garlic ": {
+            "quantity": "250",
+            "unit": "gram"
+        }
+    },
+    {
+        "Garlic Paste": {
+            "quantity": "500",
+            "unit": "gram"
+        }
+    },
+    {
+        "Ginger Paste": {
+            "quantity": "500",
+            "unit": "gram"
+        }
+    },
+    {
+        "Olive Oil": {
+            "quantity": "500",
+            "unit": "mililitre"
+        }
+    },
+    {
+        "Tuna": {
+            "quantity": "250",
+            "unit": "gram"
+        }
+    },
+    {
+        "Chicken Breast ": {
+            "quantity": "500",
+            "unit": "gram"
+        }
+    }
+]

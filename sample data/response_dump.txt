@@ -1,0 +1,66 @@
+Inputs:- Cuisine: Random, Nutrition: Cheat Day Meal, Portion: 1, Prep_time: 30
+Output:-
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "text": "\n\nCheat Day Meal Rice and Tomato Curry\n\nIngredients:\n\n- 1 kilogram Rice \n- 10 pieces Egg \n- 1 kilogram Tomato Puree \n- 4 cans Mushrooms \n- 1 kilogram Kidney Beans \n- 1 kilogram Carrot \n- 1 kilogram Tomato \n- 500 grams Butter \n- 500 grams Cheese \n- 2 kilogram Potatoes \n- 1 kilogram Onion \n- 500 mililitres Olive Oil \n- 250 grams Tuna \n- 500 grams Chicken Breast \n\nInstructions:\n\n1. Heat butter in a large pan over medium heat.\n\n2. Add onion, carrot and potatoes and cook until the vegetables are lightly browned.\n\n3. Add tomato puree, kidney beans and mushrooms and stir to combine.\n\n4. Add salt and chilli powder to taste.\n\n5. Add the rice and stir to combine.\n\n6. Add water and bring to a boil.\n\n7. Reduce heat to low and simmer for 15 minutes.\n\n8. Add tuna, chicken breast, eggs and cheese and stir to combine.\n\n9. Cover the pan and simmer for an additional 10 minutes.\n\n10. Drizzle with olive oil, stir to combine and serve."
+    }
+  ],
+  "created": 1677375832,
+  "id": "cmpl-6o0MqUG6l4tcJNH0oLbmhwLN7mfRF",
+  "model": "text-davinci-003",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 275,
+    "prompt_tokens": 673,
+    "total_tokens": 948
+  }
+}
+
+Inputs:- Cuisine: Middle Eastern, Nutrition: Balanced, Portion: 1, Prep_time: Unlimited
+Output:-
+{
+  "choices": [
+    {
+      "finish_reason": null,
+      "index": 0,
+      "logprobs": null,
+      "text": "\n\nRecipe: Middle Eastern Tuna Rice \n\nIngredients: \n- Rice (1 kg)\n- Tuna (250 g)\n- Musli (1 kg)\n- Onion (1 kg)\n- Olive Oil (500 ml)\n- Garlic Paste (500 g)\n- Turmeric Powder (100 g)\n- Salt (250 g)\n\nTotal Calories: 5,700 calories\n\nCooking Steps: \n1. Start by washing the rice and musli separately and keep them aside.\n\n2. In a large pot, heat olive oil over medium heat.\n\n3. Add onion and garlic paste and saut\u00e9 for about 5 minutes, stirring regularly.\n\n4. Add rice and musli to the pot and stir to combine.\n\n5. Add tuna and stir for about 2 minutes.\n\n6. Add turmeric powder, salt, and water.\n\n7. Cover the pot and bring to a boil.\n\n8. Reduce heat and let the rice cook for about 15 minutes or until the rice is cooked and all the liquid has been absorbed.\n\n9. Serve with a side of vegetables or salad. Enjoy!"
+    }
+  ],
+  "created": 1677377523,
+  "id": "cmpl-6o0o7RhbhuJx1AZLnV6uczHvVe8j6",
+  "model": "text-davinci-003",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 249,
+    "prompt_tokens": 682,
+    "total_tokens": 931
+  }
+}
+
+Inputs:- Cuisine: Indian, Nutrition: Muscle Gain, Portion: 1, Prep_time: 60
+Output:-
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "text": "\n\nRecipe: Tuna Rice Masala with Egg and Durum\n\nIngredients:\n\n- Rice : 1/2 kilogram\n- Tuna : 250 gram\n- Egg : 5 Pieces\n- Durum : 1 Packet\n- Tomato Puree : 1/2 kilogram\n- Onion : 1/2 kilogram\n- Garlic : 1/4 kilogram\n- Ginger Paste : 1/4 kilogram\n- Olive Oil : 1/4 cup\n- Garam Masala : 1 teaspoon\n- Chilli Powder : 1 teaspoon\n- Turmeric Powder : 1 teaspoon\n- Salt : 1 teaspoon\n- Sugar : 1 teaspoon\n\nCooking Steps:\n\n1. In a pot, heat olive oil and add onion, garlic and ginger paste. Saute for 5 minutes.\n\n2. Add tomato puree and stir for 2 minutes.\n\n3. Add tuna, garam masala, chilli powder, turmeric powder, salt and sugar. Cook for 5 minutes.\n\n4. Add rice and stir for 1 minute.\n\n5. Add water and bring it to boil.\n\n6. Reduce the heat and cover the pot with a lid. Let the rice cook for 10 minutes.\n\n7. In a separate pan, heat olive oil and crack the eggs. Cook until they are done.\n\n8. Take a plate and arrange cooked rice, eggs and Durum.\n\nTotal calorie count of the meal: Approx. 900 kcal"
+    }
+  ],
+  "created": 1677377822,
+  "id": "cmpl-6o0swKgO5SWe9PwgYwHXyesDwOdkk",
+  "model": "text-davinci-003",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 311,
+    "prompt_tokens": 689,
+    "total_tokens": 1000
+  }
+}
+
