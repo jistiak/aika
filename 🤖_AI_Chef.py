@@ -86,7 +86,7 @@ def recipe_generator(data, cuisine, nutrition, portion, prep_time):
     response = openai.Completion.create(
         # model="text-ada-001",
         model="text-davinci-003",
-        prompt=f"Create a recipe and cooking steps based on the items in this json file {data} in {cuisine} cuisine style, with {nutrition} nutrition target in mind. The recipe should be for {portion} persons, only one portion per person and within {prep_time} minutes of preparation and cooking time. Don't use all the ingredients and use the best possible combination economically. give the oil, spices, salt or chillies in minimal amount. provide the total calorie count of the meal. the output should be a valid json format data. the {user_id} is level one, nested inside should be 'recipe_name', nested inside 'recipe_name' should be 'ingredients', 'cooking_step' and 'calorie_count'. within 'ingredients' there should be nested 'quantity' and 'unit' keys.",
+        prompt=f"Create a recipe and cooking steps based on the items in this json file {data} in {cuisine} cuisine style, with {nutrition} nutrition target in mind. The recipe should be for {portion} persons, only one portion per person and within {prep_time} minutes of preparation and cooking time. Don't use all the ingredients and use the best possible combination economically. give the oil, spices, salt or chillies in minimal amount. provide the total calorie count of the meal. the output should be a valid json format data. the {user_id} is level one, nested inside should be 'recipe_name', nested inside 'recipe_name' should be 'ingredients', 'cooking_steps' and 'calorie_count'. within 'ingredients' there should be nested 'quantity' and 'unit' keys.",
         temperature=0.7,
         max_tokens=750,
         top_p=1,
