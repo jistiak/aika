@@ -7,20 +7,21 @@ Advantage:
 
 
 Challenges:
-    1. Data 
+    1. Data
+
 Questions/Issues:
     1.  
 
 
 Features: 
-Shopping list extraction
-Save item and quantity in database (Redis)  
-Generate Prompt for Open AI API:
-All kitchen items available → keeping the track in Redis, generating prompt from taking the data from Redis and tracking the last activity
-Type of cuisine (possible)
-Nutrition value (healthy or tasty or balanced)
-Number of portion (sudden guest)
-Vacation/Weekday/Busy Day → Preparation time for using in prompt
-Accept the recipe or Not
-Keeping the record of used recipe on redis and update the ingredients available
-Auto generate Shopping list after each meal prep
+1. Shopping list extraction
+2. Save item and quantity in database (Redis)  
+3. Generate Prompt for Open AI API:
+        a. All kitchen items available → keeping the track in Redis, generating prompt from taking the data from Redis and tracking the last activity
+        b. Type of cuisine (possible)
+        c. Nutrition value (healthy or tasty or balanced)
+        d. Number of portion (sudden guest)
+        e. Vacation/Weekday/Busy Day → Preparation time for using in prompt
+        f. Accept the recipe or Not
+4. Keeping the record of used recipe on redis and update the ingredients available
+5. Auto generate Shopping list after each meal prep
