@@ -116,23 +116,24 @@ if cook:
 
         for user in recipe.keys():
 
-            st.subheader(f"Recipe Name: {recipe[user]['recipe']}")
-            st.markdown(f"Calorie Count: {recipe[user]['calorie count']}\n")
+            try:
+                st.subheader(f"Recipe Name: {recipe[user]['recipe']}")
+                st.markdown(
+                    f"Calorie Count: {recipe[user]['calorie count']}\n")
 
-            st.subheader("Ingredients:\n")
+                st.subheader("Ingredients:\n")
 
-            ingredients = recipe[user]['ingredients']
+                ingredients = recipe[user]['ingredients']
 
-            ing_pretty = "\n".join(
-                [f"- {k}: {v['quantity']} {v['unit']}" if 'unit' in v else f"- {k}: {v}" for k, v in ingredients.items()])
+                ing_pretty = "\n".join(
+                    [f"- {k}: {v['quantity']} {v['unit']}" if 'unit' in v else f"- {k}: {v}" for k, v in ingredients.items()])
 
-            st.markdown(f"{ing_pretty}\n")
+                st.markdown(f"{ing_pretty}\n")
 
-            st.subheader("Cooking Steps:\n")
-            st.markdown(f"{recipe[user]['cooking steps']}\n")
+                st.subheader("Cooking Steps:\n")
+                st.markdown(f"{recipe[user]['cooking steps']}\n")
 
-            with open("./assets/response_dump.txt", "a") as file:
-                file.write(
-                    f"Inputs:- Cuisine: {cuisine}, Nutrition: {nutrition}, Portion: {portion}, Prep_time: {prep_time}\nOutput:-\n{recipe}\n\n")
+            except:
+                st.json(recipe)
     else:
         st.text("Invalid output! Try Again!")
