@@ -35,14 +35,13 @@ def redis_call(host, port, password):
 
 data = redis_call(r_host, r_port, r_pass)
 
-st.text(data)
 
-# df = pd.DataFrame()
+df = pd.DataFrame()
 
-# for i in range(len(data)):
-#     for key, value in data[i].items():
-#         temp_df = pd.DataFrame.from_dict(value, orient='index').T
-#         temp_df.index = [key]
-#         df = pd.concat([df, temp_df])
-
-# st.dataframe(df)
+for key, value in data.items():
+    if key != 'key':
+        temp_df = pd.DataFrame.from_dict(json.loads(value), orient='index').T
+        temp_df.index = [key]
+        df = pd.concat([df, temp_df])
+    else:
+        pass
