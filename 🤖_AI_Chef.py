@@ -136,4 +136,4 @@ if cook:
             except:
                 st.json(recipe)
     else:
-        st.text("Invalid output! Try Again!")
+        st.text(recipe)
