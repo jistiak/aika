@@ -183,6 +183,8 @@ grocery_data.to_csv('categorized_grocery_items.csv', index=False)
 categorized_df = pd.read_csv('categorized_grocery_items.csv')
 categorized_df_sorted = categorized_df.sort_values(by='Category')
 
-
+#unit conversion to kilogram
+categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'gram', 'Quantity'] /= 1000
+categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'gram', 'Unit'] = 'Kilogram'
 
 
