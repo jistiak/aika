@@ -187,4 +187,8 @@ categorized_df_sorted = categorized_df.sort_values(by='Category')
 categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'gram', 'Quantity'] /= 1000
 categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'gram', 'Unit'] = 'Kilogram'
 
+#unit conversion to litre
+categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'MilliLitre', 'Quantity'] /= 1000
+categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'MilliLitre', 'Unit'] = 'Litre'
+
 
