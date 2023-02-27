@@ -177,3 +177,12 @@ for index, row in grocery_data.iterrows():
                 break
 
 
+#Generate updated csv file 
+grocery_data.to_csv('categorized_grocery_items.csv', index=False)
+
+categorized_df = pd.read_csv('categorized_grocery_items.csv')
+categorized_df_sorted = categorized_df.sort_values(by='Category')
+
+
+
+
