@@ -8,7 +8,6 @@ import pandas as pd
 import redis
 import hashlib
 import socket
-import matplotlib.pyplot as plt
 
 st.set_page_config(
     page_title="AI Chef",
