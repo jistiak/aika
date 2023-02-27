@@ -160,3 +160,6 @@ categories = {
 
 #categories case sensitive
 #three catagories liquid, solids and peices ()????
+
+# Load data into a pandas DataFrame
+grocery_data = pd.read_csv('Grocery_list_I.csv')
