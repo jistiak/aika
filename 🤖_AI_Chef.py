@@ -78,19 +78,6 @@ if prep_time == 'Unlimited':
     prep_time = 180
 
 
-categories = {
-    'Bakery': ['durum', 'salt', 'sugar'],
-    'Canned goods': ['kidney beans', 'mushroom', 'tomato puree'],
-    'Dairy': ['butter', 'cheese', 'egg', 'eggs', 'milk', 'yogurt'],
-    'Fish': ['salmon', 'tuna'],
-    'Fruits': ['apple', 'orange', 'tangerine'],
-    'Grains': ['bread', 'flour', 'musli', 'pasta', 'rice'],
-    'Meat': ['beef', 'chicken', 'chicken breast', 'pork'],
-    'Oil': ['cooking oil', 'olive oil'],
-    'Spices': ['chilli powder', 'garam masala', 'garlic paste', 'garlic powder', 'ginger paste', 'turmeric powder'],
-    'Vegetables': ['carrot', 'garlic', 'onion', 'potatoes', 'tomato']   
-}
-
 # openai.api_key = os.getenv("OPENAI_API_KEY")
 openai.api_key = OPENAI_API_KEY
 
@@ -156,3 +143,20 @@ if cook:
                 st.text(recipe)
     else:
         st.text(recipe)
+        
+#categorize, unit conversion and visualization
+categories = {
+    'Bakery': ['durum', 'salt', 'sugar'],
+    'Canned goods': ['kidney beans', 'mushroom', 'tomato puree'],
+    'Dairy': ['butter', 'cheese', 'egg', 'eggs', 'milk', 'yogurt'],
+    'Fish': ['salmon', 'tuna'],
+    'Fruits': ['apple', 'orange', 'tangerine'],
+    'Grains': ['bread', 'flour', 'musli', 'pasta', 'rice'],
+    'Meat': ['beef', 'chicken', 'chicken breast', 'pork'],
+    'Oil': ['cooking oil', 'olive oil'],
+    'Spices': ['chilli powder', 'garam masala', 'garlic paste', 'garlic powder', 'ginger paste', 'turmeric powder'],
+    'Vegetables': ['carrot', 'garlic', 'onion', 'potatoes', 'tomato']   
+}
+
+#categories case sensitive
+#three catagories liquid, solids and peices ()????
