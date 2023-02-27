@@ -191,4 +191,10 @@ categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'gram', 'Unit'] = 'Ki
 categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'MilliLitre', 'Quantity'] /= 1000
 categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'MilliLitre', 'Unit'] = 'Litre'
 
+#plot all data
+x = categorized_df_sorted.plot(kind='bar', x='Current Items', y='Quantity')
+x.set_xlabel('Current Items')
+x.set_ylabel('Quantity (Pieces, Kilogram, Litre)')
+plt.show()
+
 
