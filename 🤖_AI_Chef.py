@@ -163,3 +163,17 @@ categories = {
 
 # Load data into a pandas DataFrame
 grocery_data = pd.read_csv('Grocery_list_I.csv')
+
+# create new column
+grocery_data['Category'] = ''
+
+#categorize
+for index, row in grocery_data.iterrows():
+    item_name = row['Current Items'].lower()
+    for category, keywords in categories.items():
+        for keyword in keywords:
+            if keyword in item_name:
+                grocery_data.at[index, 'Category'] = category
+                break
+
+
