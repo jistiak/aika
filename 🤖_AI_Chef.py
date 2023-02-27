@@ -8,6 +8,7 @@ import pandas as pd
 import redis
 import hashlib
 import socket
+import matplotlib.pyplot as plt
 
 st.set_page_config(
     page_title="AI Chef",
@@ -76,6 +77,19 @@ prep_time = st.sidebar.select_slider('Maximum Preparation Time (in minutes)',
 if prep_time == 'Unlimited':
     prep_time = 180
 
+
+categories = {
+    'Bakery': ['durum', 'salt', 'sugar'],
+    'Canned goods': ['kidney beans', 'mushroom', 'tomato puree'],
+    'Dairy': ['butter', 'cheese', 'egg', 'eggs', 'milk', 'yogurt'],
+    'Fish': ['salmon', 'tuna'],
+    'Fruits': ['apple', 'orange', 'tangerine'],
+    'Grains': ['bread', 'flour', 'musli', 'pasta', 'rice'],
+    'Meat': ['beef', 'chicken', 'chicken breast', 'pork'],
+    'Oil': ['cooking oil', 'olive oil'],
+    'Spices': ['chilli powder', 'garam masala', 'garlic paste', 'garlic powder', 'ginger paste', 'turmeric powder'],
+    'Vegetables': ['carrot', 'garlic', 'onion', 'potatoes', 'tomato']   
+}
 
 # openai.api_key = os.getenv("OPENAI_API_KEY")
 openai.api_key = OPENAI_API_KEY
