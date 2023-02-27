@@ -143,58 +143,5 @@ if cook:
                 st.text(recipe)
     else:
         st.text(recipe)
-        
-#categorize, unit conversion and visualization
-categories = {
-    'Bakery': ['durum', 'salt', 'sugar'],
-    'Canned goods': ['kidney beans', 'mushroom', 'tomato puree'],
-    'Dairy': ['butter', 'cheese', 'egg', 'eggs', 'milk', 'yogurt'],
-    'Fish': ['salmon', 'tuna'],
-    'Fruits': ['apple', 'orange', 'tangerine'],
-    'Grains': ['bread', 'flour', 'musli', 'pasta', 'rice'],
-    'Meat': ['beef', 'chicken', 'chicken breast', 'pork'],
-    'Oil': ['cooking oil', 'olive oil'],
-    'Spices': ['chilli powder', 'garam masala', 'garlic paste', 'garlic powder', 'ginger paste', 'turmeric powder'],
-    'Vegetables': ['carrot', 'garlic', 'onion', 'potatoes', 'tomato']   
-}
-
-#categories case sensitive
-#three catagories liquid, solids and peices ()????
-
-# Load data into a pandas DataFrame
-grocery_data = pd.read_csv('Grocery_list_I.csv')
-
-# create new column
-grocery_data['Category'] = ''
-
-#categorize
-for index, row in grocery_data.iterrows():
-    item_name = row['Current Items'].lower()
-    for category, keywords in categories.items():
-        for keyword in keywords:
-            if keyword in item_name:
-                grocery_data.at[index, 'Category'] = category
-                break
-
-
-#Generate updated csv file 
-grocery_data.to_csv('categorized_grocery_items.csv', index=False)
-
-categorized_df = pd.read_csv('categorized_grocery_items.csv')
-categorized_df_sorted = categorized_df.sort_values(by='Category')
-
-#unit conversion to kilogram
-categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'gram', 'Quantity'] /= 1000
-categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'gram', 'Unit'] = 'Kilogram'
-
-#unit conversion to litre
-categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'MilliLitre', 'Quantity'] /= 1000
-categorized_df_sorted.loc[categorized_df_sorted['Unit'] == 'MilliLitre', 'Unit'] = 'Litre'
-
-#plot all data
-x = categorized_df_sorted.plot(kind='bar', x='Current Items', y='Quantity')
-x.set_xlabel('Current Items')
-x.set_ylabel('Quantity (Pieces, Kilogram, Litre)')
-plt.show()
 
 
