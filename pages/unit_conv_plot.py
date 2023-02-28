@@ -39,5 +39,17 @@ def sort_catagory(dataFrame):
     dataFrame = dataFrame.sort_values(by='Category')
     return dataFrame
 
+def unit_conversion(dataFrame):
+
+    # Convert Kilogram to gram
+    dataFrame.loc[dataFrame['Unit'] == 'Kilogram', ['Quantity', 'Unit']] = dataFrame.loc[dataFrame['Unit'] == 'Kilogram', ['Quantity', 'Unit']].replace({'Quantity': {value: value*1000 for value in dataFrame.loc[dataFrame['Unit'] == 'Kilogram', 'Quantity']} , 'Unit': {'Kilogram': 'gram'}})
+
+    # Convert Litre to millilitre
+    dataFrame.loc[dataFrame['Unit'] == 'Litre', ['Quantity', 'Unit']] = dataFrame.loc[dataFrame['Unit'] == 'Litre', ['Quantity', 'Unit']].replace({'Quantity': {value: value*1000 for value in dataFrame.loc[dataFrame['Unit'] == 'Litre', 'Quantity']} , 'Unit': {'Litre': 'MilliLitre'}})
+    
+    return dataFrame
+
+
+
 
 
