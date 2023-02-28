@@ -56,7 +56,9 @@ st.title("🤖 AI Chef")
 
 data = redis_call(r_host, r_port, r_pass)
 
-OPENAI_API_KEY = st.sidebar.text_input('Your OpenAI API')
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+if not OPENAI_API_KEY:
+    OPENAI_API_KEY = st.sidebar.text_input('Your OpenAI API')
 
 cuisine = st.sidebar.selectbox('Type of Cuisine',
                                ["Random", "Chinese", "French", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Middle Eastern", "Spanish", "Thai"])
