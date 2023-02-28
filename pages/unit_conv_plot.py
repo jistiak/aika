@@ -19,14 +19,14 @@ def categorize(categories,file_path):
     # Define the rules for categorizing items by keyword
 
     # Load data into a pandas DataFrame
-    grocery_data = pd.read_csv('Grocery_List_I.csv').set_index("Current Items")
+    grocery_data = pd.read_csv(file_path).set_index("Current Items")
     grocery_data.index.name = None
     # create new column
     grocery_data['Category'] = ''
 
     #categorize
     for index, row in grocery_data.iterrows():
-        item_name = index
+        item_name = index.lower()
         for category, keywords in categories.items():
             for keyword in keywords:
                 if keyword in item_name:
@@ -34,10 +34,10 @@ def categorize(categories,file_path):
                     break
     return grocery_data
 
-categorized_grocery_items = categorize(categories, 'D:\Codes\lynx_ai\assets\Grocery_List_I.csv')
 
 def sort_catagory(dataFrame):
     dataFrame = dataFrame.sort_values(by='Category')
     return dataFrame
+
 
 
