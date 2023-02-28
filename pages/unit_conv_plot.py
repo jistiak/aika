@@ -34,4 +34,6 @@ def categorize(categories,file_path):
                     break
     return grocery_data
 
+categorized_grocery_items = categorize(categories, 'D:\Codes\lynx_ai\assets\Grocery_List_I.csv')
+
 
