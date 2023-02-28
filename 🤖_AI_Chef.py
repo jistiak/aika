@@ -140,7 +140,10 @@ if cook:
 
                 st.markdown(f"{steps_pretty}\n")
 
-            except:
+            except Exception as e:
+                st.text('An Exception occured: ', e)
                 st.text(recipe)
     else:
         st.text(recipe)
+
+
