@@ -36,4 +36,8 @@ def categorize(categories,file_path):
 
 categorized_grocery_items = categorize(categories, 'D:\Codes\lynx_ai\assets\Grocery_List_I.csv')
 
+def sort_catagory(dataFrame):
+    dataFrame = dataFrame.sort_values(by='Category')
+    return dataFrame
+
 
