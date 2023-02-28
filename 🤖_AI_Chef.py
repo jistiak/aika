@@ -8,6 +8,7 @@ import pandas as pd
 import redis
 import hashlib
 import socket
+import ast
 
 st.set_page_config(
     page_title="AI Chef",
@@ -88,7 +89,7 @@ def recipe_generator(data, cuisine, nutrition, portion, prep_time):
     response = openai.Completion.create(
         # model="text-ada-001",
         model="text-davinci-003",
-        prompt=f"Create a recipe and cooking steps based on the items in this json file {data} in {cuisine} cuisine style, with {nutrition} nutrition target in mind. The recipe should be for {portion} persons, only one portion per person and within {prep_time} minutes of preparation and cooking time. Don't use all the ingredients and use the best possible combination economically. give the oil, spices, salt or chillies in minimal amount. provide the total calorie count of the meal. the output should be a valid json format data. the {user_id} is level one, nested inside should be 'recipe_name', nested inside 'recipe_name' should be 'ingredients', 'cooking_steps' and 'calorie_count'. within 'ingredients' there should be nested 'quantity' and 'unit' keys.",
+        prompt=f"Create a recipe and cooking steps based on the items in this json file {data} in {cuisine} cuisine style, with {nutrition} nutrition target in mind. The recipe should be for {portion} persons, only one portion per person and within {prep_time} minutes of preparation and cooking time. Don't use all the ingredients and use the best possible combination economically. give the oil, spices, salt or chillies in minimal amount. provide the total calorie count of the meal per portion. the output should be a dictionary named {user_id}. there should be four keys, 'recipe_name', 'ingredients','cooking_steps' and 'calorie_count'. give 'ingredients' as a list ['ingredient','quantity' ,'unit'], 'cooking_steps' key should be a list of the cooking steps, 'calorie_count' key will have just the calorie value per person.",
         temperature=0.7,
         max_tokens=750,
         top_p=1,
@@ -113,37 +114,29 @@ if cook:
     recipe = raw_output['choices'][0]['text']
     recipe = recipe.replace("'", "\"")
 
-    if is_valid_json(recipe):
-        recipe = json.loads(recipe)
+    try:
+        recipe = ast.literal_eval(recipe.split(' = ')[1])
 
-        for user in recipe.keys():
+        st.subheader(f"Recipe Name: {recipe['recipe_name']}")
+        st.markdown(f"**Calorie Count:** {recipe['calorie_count']}\n")
 
-            try:
-                st.subheader(f"Recipe Name: {recipe[user]['recipe_name']}")
-                st.markdown(
-                    f"Calorie Count: {recipe[user]['calorie_count']}\n")
+        st.subheader("Ingredients:\n")
 
-                st.subheader("Ingredients:\n")
+        ingredients = recipe['ingredients']
 
-                ingredients = recipe[user]['ingredients']
+        ingredients_list = ""
+        for item in ingredients:
+            ingredients_list += f"* {item[0]}: {item[1]} {item[2]}\n"
+        st.markdown(f"{ingredients_list}\n")
 
-                ing_pretty = "\n".join(
-                    [f"- {k}: {v['quantity']} {v['unit']}" if 'unit' in v else f"- {k}: {v}" for k, v in ingredients.items()])
+        st.subheader("Cooking Steps:\n")
 
-                st.markdown(f"{ing_pretty}\n")
+        steps_pretty = ""
+        for step in recipe['cooking_steps']:
+            steps_pretty += f"- {step}\n"
 
-                st.subheader("Cooking Steps:\n")
+        st.markdown(f"{steps_pretty}\n")
 
-                steps_pretty = ""
-                for step in recipe[user]['cooking_steps']:
-                    steps_pretty += f"- {step}\n"
-
-                st.markdown(f"{steps_pretty}\n")
-
-            except Exception as e:
-                st.text('An Exception occured: ', e)
-                st.text(recipe)
-    else:
-        st.text(recipe)
-
-
+    except Exception as e:
+        st.text('An Exception occured: ', e)
+        st.text(recipe.split(' = ')[1])
