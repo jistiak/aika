@@ -2,6 +2,7 @@ import csv
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#Check catagories.txt in assets
 categories = {
         'Bakery': ['durum', 'salt', 'sugar', 'bread'],
         'Canned goods': ['kidney beans', 'mushroom', 'tomato puree'],
