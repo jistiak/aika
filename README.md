@@ -22,6 +22,6 @@ Features:
         c. Nutrition value (healthy or tasty or balanced)
         d. Number of portion (sudden guest)
         e. Vacation/Weekday/Busy Day → Preparation time for using in prompt
-        f. Accept the recipe or Not
-4. Keeping the record of used recipe on redis and update the ingredients available
-5. Auto generate Shopping list after each meal prep
+4. Accept the recipe or Not
+5. Keeping the record of used recipe on redis and update the ingredients available
+6. Auto generate Shopping list after each meal prep
