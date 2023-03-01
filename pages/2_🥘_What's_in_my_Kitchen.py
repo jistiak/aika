@@ -5,6 +5,7 @@ import pandas as pd
 import redis
 import os
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 
 st.set_page_config(page_title="What's in my Kitchen?", page_icon="🥘")
@@ -80,15 +81,22 @@ st.dataframe(categorize(categories, df))
 def unit_conversion(dataFrame):
 
     # Convert Kilogram to gram
-    dataFrame.loc[dataFrame['Unit'] == 'Kilogram', ['Quantity', 'Unit']] = dataFrame.loc[dataFrame['Unit'] == 'Kilogram', ['Quantity', 'Unit']].replace(
-        {'Quantity': {value: value*1000 for value in dataFrame.loc[dataFrame['Unit'] == 'Kilogram', 'Quantity']}, 'Unit': {'Kilogram': 'gram'}})
+    dataFrame.loc[dataFrame['unit'] == 'Kilogram', ['quantity', 'unit']] = dataFrame.loc[dataFrame['unit'] == 'Kilogram', ['quantity', 'unit']].replace(
+        {'quantity': {value: value*1000 for value in dataFrame.loc[dataFrame['unit'] == 'Kilogram', 'quantity']}, 'unit': {'Kilogram': 'gram'}})
 
     # Convert Litre to millilitre
-    dataFrame.loc[dataFrame['Unit'] == 'Litre', ['Quantity', 'Unit']] = dataFrame.loc[dataFrame['Unit'] == 'Litre', ['Quantity', 'Unit']].replace(
-        {'Quantity': {value: value*1000 for value in dataFrame.loc[dataFrame['Unit'] == 'Litre', 'Quantity']}, 'Unit': {'Litre': 'MilliLitre'}})
+    dataFrame.loc[dataFrame['unit'] == 'Litre', ['quantity', 'unit']] = dataFrame.loc[dataFrame['unit'] == 'Litre', ['quantity', 'unit']].replace(
+        {'quantity': {value: value*1000 for value in dataFrame.loc[dataFrame['unit'] == 'Litre', 'quantity']}, 'unit': {'Litre': 'MilliLitre'}})
 
     return dataFrame
 
+
+st.dataframe(unit_conversion(df))
+
+
+def plotting(dataFrame):
+    fig = px.scatter(dataFrame, x='quantity', y='category')
+    fig.show()
 
 def plotting(dataFrame, index):
 
