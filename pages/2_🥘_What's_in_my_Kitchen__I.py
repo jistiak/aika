@@ -7,6 +7,7 @@ import os
 import matplotlib.pyplot as plt
 
 
+
 st.set_page_config(page_title="What's in my Kitchen?", page_icon="🥘")
 
 st.title("🥘 What's in my Kitchen?")
