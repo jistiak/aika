@@ -45,15 +45,21 @@ def redis_call(host, port, password):
 data = redis_call(r_host, r_port, r_pass)
 
 
-df = pd.DataFrame()
+def redis2df(redis_json):
+    df = pd.DataFrame()
 
-for key, value in data.items():
-    if key != 'key':
-        temp_df = pd.DataFrame.from_dict(json.loads(value), orient='index').T
-        temp_df.index = [key]
-        df = pd.concat([df, temp_df])
-    else:
-        pass
+    for key, value in redis_json.items():
+        if key != 'key':
+            temp_df = pd.DataFrame.from_dict(
+                json.loads(value), orient='index').T
+            temp_df.index = [key]
+            df = pd.concat([df, temp_df])
+        else:
+            pass
+    return df
+
+
+df = redis2df(data)
 
 st.dataframe(df)
 
