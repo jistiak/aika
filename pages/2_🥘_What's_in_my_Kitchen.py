@@ -96,3 +96,27 @@ def unit_conversion(dataFrame):
         {'Quantity': {value: value*1000 for value in dataFrame.loc[dataFrame['Unit'] == 'Litre', 'Quantity']}, 'Unit': {'Litre': 'MilliLitre'}})
 
     return dataFrame
+
+
+def plotting(dataFrame, index):
+
+    piece_df = dataFrame.loc[dataFrame['Unit'] == 'Piece']
+    gram_df = dataFrame.loc[dataFrame['Unit'] == 'gram']
+    milliLitre_df = dataFrame.loc[dataFrame['Unit'] == 'MilliLitre']
+
+    if not piece_df.empty:
+        p = piece_df.plot(kind='bar', x=index, y='Quantity')
+        p.set_xlabel('Current Items')
+        p.set_ylabel('Quantity (Pieces)')
+
+    if not gram_df.empty:
+        g = gram_df.plot(kind='bar', x=index, y='Quantity')
+        g.set_xlabel('Current Items')
+        g.set_ylabel('Quantity (gram)')
+
+    if not milliLitre_df.empty:
+        l = milliLitre_df.plot(kind='bar', x=index, y='Quantity')
+        l.set_xlabel('Current Items')
+        l.set_ylabel('Quantity (Millilitre)')
+
+    plt.show()
