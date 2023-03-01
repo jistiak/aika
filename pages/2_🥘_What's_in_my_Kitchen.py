@@ -74,7 +74,6 @@ def categorize(categories, grocery_data):
 
     return grocery_data.sort_values(by='category')
 
-
 st.dataframe(categorize(categories, df))
 
 
@@ -94,5 +93,5 @@ def unit_conversion(dataFrame):
 st.dataframe(unit_conversion(df))
 
 def plotting(dataFrame, index):
-    fig = px.bar_chart(dataFrame, x=index, y='quantity')
+    fig = px.bar(dataFrame, x=index, y='quantity')
     fig.show()
