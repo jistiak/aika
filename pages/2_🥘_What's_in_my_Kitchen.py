@@ -4,6 +4,7 @@ import json
 import pandas as pd
 import redis
 import os
+import matplotlib.pyplot as plt
 
 
 st.set_page_config(page_title="What's in my Kitchen?", page_icon="🥘")
@@ -49,3 +50,36 @@ for key, value in data.items():
         pass
 
 st.dataframe(df)
+
+
+def categorize(categories, grocery_data):
+    # create new column
+    grocery_data['category'] = ''
+
+    # categorize
+    for index, _ in grocery_data.iterrows():
+        item_name = index.lower()
+        for category, keywords in categories.items():
+            for keyword in keywords:
+                if keyword in item_name:
+                    grocery_data.at[index, 'category'] = category
+                    break
+
+    return grocery_data.sort_values(by='category')
+
+
+categories = {
+    'Bakery': ['durum', 'salt', 'sugar', 'bread'],
+    'Canned goods': ['kidney beans', 'mushroom', 'tomato puree'],
+    'Dairy': ['butter', 'cheese', 'egg', 'eggs', 'milk', 'yogurt'],
+    'Fish': ['salmon', 'tuna'],
+    'Fruits': ['apple', 'orange', 'tangerine'],
+    'Grains': ['flour', 'musli', 'pasta', 'rice'],
+    'Meat': ['beef', 'chicken', 'chicken breast', 'pork'],
+    'Oil': ['cooking oil', 'olive oil'],
+    'Spices': ['chilli powder', 'garam masala', 'garlic paste', 'garlic powder', 'ginger paste', 'turmeric powder'],
+    'Vegetables': ['carrot', 'garlic', 'onion', 'potatoes', 'tomato']
+}
+
+
+st.dataframe(categorize(categories, df))
