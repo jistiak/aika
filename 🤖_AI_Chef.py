@@ -50,37 +50,31 @@ def redis_call(host, port, password):
 
     return data
 
-def subtruct_ingredients(ingredients):
+def subtruct_ingredients(ingredient_list):
     r = redis.Redis(
         host=r_host,
         port=r_port,
         password=r_pass)
-    # ingredient_list = []
-    # if isinstance(ingredients, dict):
-    #     st.text('valid dict')
-    # else:
-    #     st.text('invalid dict')
-    #     return False
     
-    # for key, value in ingredients.items():
-    #     ingredient_list.append([key, value['quantity'], value['unit']])
-    
-    st.text(ingredient_list)
-    st.text(len(ingredient_list))
-
     try:
         for item in ingredient_list:
-            key = item[0]
-            # st.text('after item 0 ', key)
-            value = int(item[1])
-            # st.text('after item 1 ', value)
-            if key == 'Chicken Breast':
-                key = 'Chicken Breast '
-            current_value = int(r.hget(key, 'quantity'))
-            st.text(current_value)
-            st.text('type of current value: ', type(current_value))
-            new_value = str(current_value - value)
-            r.hset(key, 'quantity', new_value)
+            ing_key = item[0]
+            ing_value = int(item[1])
+
+            # temporary fix for Chicken Breas extra space in the key in Redis
+            if ing_key == 'Chicken Breast':
+                ing_key = 'Chicken Breast '
+
+            redis_value = r.get(ing_key)
+            # converting JSON string to Dictionary
+            json_data = json.loads(redis_value)
+            current_value = float(json_data['quantity'])
+            new_value = current_value - ing_value
+            json_data['quantity'] = str(new_value)
+            # convert dictionary back to JSON string
+            new_value_str = json.dumps(json_data)
+            # Save updated value back to Redis
+            r.set(ing_key, new_value_str)
     except Exception as e:
         st.text(e)
     
@@ -184,7 +178,8 @@ if cook:
 
         st.markdown(f"{steps_pretty}\n")
 
-        subtruct_ingredients(recipe['ingredients'])
+        # after the action of accepting the cooking step, we need to update the data in redis
+        subtruct_ingredients(ingredients)
 
     except Exception as e:
         st.text('An Exception occured: ', e)
