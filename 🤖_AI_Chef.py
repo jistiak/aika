@@ -49,6 +49,53 @@ def redis_call(host, port, password):
 
     return data
 
+def subtruct_ingredients(ingredients):
+    r = redis.Redis(
+        host=r_host,
+        port=r_port,
+        password=r_pass)
+    ingredient_list = []
+    if isinstance(ingredients, dict):
+        st.text('valid dict')
+    else:
+        st.text('invalid dict')
+        return False
+    
+    for key, value in ingredients.items():
+        ingredient_list.append([key, value['quantity'], value['unit']])
+    
+    st.text(ingredient_list)
+    st.text(len(ingredient_list))
+
+    try:
+        for item in ingredient_list:
+            key = item[0]
+            # st.text('after item 0 ', key)
+            value = int(item[1])
+            # st.text('after item 1 ', value)
+            if key == 'Chicken Breast':
+                key = 'Chicken Breast '
+            current_value = int(r.hget(key, 'quantity'))
+            st.text(current_value)
+            st.text('type of current value: ', type(current_value))
+            new_value = str(current_value - value)
+            r.hset(key, 'quantity', new_value)
+    except Exception as e:
+        st.text(e)
+    
+    keys = r.keys()
+    values = r.mget(keys)
+
+    data = {}
+
+    for key, value in zip(keys, values):
+        data[f"{key.decode()}"] = f"{value.decode()}"
+
+    st.text('show updated data from Redis')
+    st.text(data)
+    
+    
+
 
 st.image("./assets/dalle_cover_lynx.png", use_column_width=True)
 st.title("🤖 AI Chef")
@@ -90,7 +137,7 @@ def recipe_generator(data, cuisine, nutrition, portion, prep_time):
         model="text-davinci-003",
         prompt=f"Create a recipe and cooking steps based on the items in this json file {data} in {cuisine} cuisine style, with {nutrition} nutrition target in mind. The recipe should be for {portion} persons, only one portion per person and within {prep_time} minutes of preparation and cooking time. Don't use all the ingredients and use the best possible combination economically. give the oil, spices, salt or chillies in minimal amount. provide the total calorie count of the meal. the output should be a valid json format data. the {user_id} is level one, nested inside should be 'recipe_name', nested inside 'recipe_name' should be 'ingredients', 'cooking_steps' and 'calorie_count'. within 'ingredients' there should be nested 'quantity' and 'unit' keys.",
         temperature=0.7,
-        max_tokens=750,
+        max_tokens=1000,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0
@@ -140,8 +187,10 @@ if cook:
 
                 st.markdown(f"{steps_pretty}\n")
 
+
             except Exception as e:
                 st.text('An Exception occured: ', e)
                 st.text(recipe)
     else:
+        st.text('Invalid JSON: generating the result from fallback')
         st.text(recipe)
