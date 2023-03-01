@@ -17,6 +17,12 @@ r_port = os.environ.get('RD_PORT')
 r_pass = os.environ.get('RD_PASS')
 
 
+with open('assets/categories.txt') as c:
+    data = c.read()
+data = data.replace("'", "\"")
+categories = json.loads(data)
+
+
 @st.cache_data
 def redis_call(host, port, password):
 
@@ -66,20 +72,6 @@ def categorize(categories, grocery_data):
                     break
 
     return grocery_data.sort_values(by='category')
-
-
-categories = {
-    'Bakery': ['durum', 'salt', 'sugar', 'bread'],
-    'Canned goods': ['kidney beans', 'mushroom', 'tomato puree'],
-    'Dairy': ['butter', 'cheese', 'egg', 'eggs', 'milk', 'yogurt'],
-    'Fish': ['salmon', 'tuna'],
-    'Fruits': ['apple', 'orange', 'tangerine'],
-    'Grains': ['flour', 'musli', 'pasta', 'rice'],
-    'Meat': ['beef', 'chicken', 'chicken breast', 'pork'],
-    'Oil': ['cooking oil', 'olive oil'],
-    'Spices': ['chilli powder', 'garam masala', 'garlic paste', 'garlic powder', 'ginger paste', 'turmeric powder'],
-    'Vegetables': ['carrot', 'garlic', 'onion', 'potatoes', 'tomato']
-}
 
 
 st.dataframe(categorize(categories, df))
