@@ -19,7 +19,7 @@ We have developed an AI-powered solution to streamline grocery shopping and cook
 
 6. The application will utilize predictive analytics to track the user's grocery consumption patterns and notify the user when it is time to go shopping again. The application can also generate a list of grocery items that are running low in the inventory, allowing the user to replenish their supplies proactively. 
 
-![User Interface: AIKA](D:\Codes\lynx_ai\assets\AIKA_UI.jpg)
+![User Interface: AIKA](assets\AIKA_UI.jpg)
 
 ### Key Features: 
 
