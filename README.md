@@ -20,7 +20,7 @@ We have built a solution to make grocery shopping and cooking more efficient wit
 
 6. The application will also be able to notify the user when it is time to go shopping again. It can also generate a list of grocery items that are running low in the inventory. 
 
-![User Interface: AI Chef](https://github.com/[ShariarImroze]/[lynx_ai]/blob/[AI_Chef]/ai_chef_ui.png?raw=true)
+![User Interface: AI Chef](https://github.com/[ShariarImroze]/[lynx_ai]/blob/[AI_Chef]/ai_chef_ui.jpg?raw=true)
 
 ### Features: 
 
