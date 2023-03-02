@@ -10,7 +10,7 @@ We have built a solution to make grocery shopping and cooking more efficient wit
 
 1. The user will first scan the cash memo       obtained by shopping at a grocery store. The items from the memo will be added to the inventory list as data.  
 
-2. Next from the AI Chef option in the UI the user can input which 'Type of Cuisine', 'Type of Diet', 'Number of Portions' and 'Maximum Preparation Time'.   
+2. Next from the AI Chef option in the UI the user can input which 'Type of Cuisine', 'Type of Diet', 'Number of Portions' and 'Maximum Preparation Time' for his/her next meal.    
 
 
 
