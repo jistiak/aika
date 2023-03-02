@@ -6,7 +6,7 @@
     'Fish': ['salmon', 'tuna'],
     'Fruits': ['apple', 'orange', 'tangerine'],
     'Grains': ['flour', 'musli', 'pasta', 'rice'],
-    'Meat': ['beef', 'chicken', 'chicken breast', 'pork'],
+    'Meat': ['beef', 'chicken', 'chicken breast', 'pork',Sausage],
     'Oil': ['cooking oil', 'olive oil'],
     'Spices': ['chilli powder', 'garam masala', 'garlic paste', 'garlic powder', 'ginger paste', 'turmeric powder'],
     'Vegetables': ['carrot', 'garlic', 'onion', 'potatoes', 'tomato']   
