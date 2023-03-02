@@ -2,6 +2,11 @@
 ### Introduction 
 We have built a solution to make grocery shopping and cooking more efficient with the help of AI. The project's goal is to save time as well as assist in quality meal prep. The user will also be able to track his/her grocery inventory and consumption trend. 
 
+### OpenAI Stack Hack
+This project was built for OpenAI Stack Hack (Create Applications Using Generative AI!) which was held from 24th February to 3rd March 2023. 
+
+Here is a link to our pitch presentation: 
+
 
 
 Cooking dish suggestions from an image of Grocery Cash memo and stored food. Dish suggestions according to user needs. 
