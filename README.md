@@ -5,7 +5,7 @@ We have developed an AI-powered solution to streamline grocery shopping and cook
 
 ## Details of the project: 
 
-### AI Chef UI: 
+### AI Chef: 
 
 1. The user will first scan the cash memo obtained by shopping at a grocery store.The application will extract relevant information, and the items from the memo will be automatically added to the inventory list as data.
 
@@ -21,17 +21,22 @@ We have developed an AI-powered solution to streamline grocery shopping and cook
 
 [User Interface: AI Chef](assets\ai_chef_ui.jpg)
 
-### Features: 
+### Key Features: 
 
-1. Shopping list extraction
-2. Save grocery item and quantity in a Redis database   
-3. Generate Prompt for OpenAI API:
-4. User may Accept or Decline the recipe
-5. Keeping the record of used grocery items and update the inventory available
-6. Generate Shopping list
+1. Shopping list extraction: The system extracts shopping list data from the user's cash memo and adds it to the inventory list for easy tracking.
+
+2. Redis database integration: The system stores grocery item and quantity data in a Redis database for efficient data management.
+
+3. OpenAI API integration: The system generates recipe suggestions using the OpenAI API, which provides customized and accurate meal recommendations.
+
+4. User feedback mechanism: The system allows users to accept or decline generated recipe suggestions to personalize the cooking experience.
+
+5. Inventory tracking: The system keeps a record of used grocery items and updates the inventory available in real-time.
+
+6. Automatic shopping list generation: The system generates a shopping list for the user when it is time to go shopping again based on their inventory levels.
 
 
 ## OpenAI Stack Hack
-This project was built for OpenAI Stack Hack (Create Applications Using Generative AI!) which was held from 24th February to 3rd March 2023. 
+This project was developed for the OpenAI Stack Hack, a hackathon that challenges participants to create innovative applications using generative AI. The hackathon took place from February 24th to March 3rd, 2023. 
 
-Here is a link to our pitch presentation: 
+For more information on our project, please refer to our pitch presentation using the link provided.
