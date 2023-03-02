@@ -1,8 +1,7 @@
 ## AI Cook
 
 ### Introduction 
-We have built a solution to make grocery shopping and cooking more efficient with the help of AI. The project's goal is to save time as well as assist in quality meal preparation. The user will also be able to track their grocery inventory and consumption trend. 
-
+We have developed an AI-powered solution to streamline grocery shopping and cooking, with the aim of making meal preparation both more efficient and higher in quality. Our application allows users to track their grocery inventory and consumption trends, and offers recipe suggestions based on their preferences and needs.
 
 ## Details of the project: 
 
