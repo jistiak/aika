@@ -50,6 +50,47 @@ def redis_call(host, port, password):
 
     return data
 
+def subtruct_ingredients(ingredient_list):
+    r = redis.Redis(
+        host=r_host,
+        port=r_port,
+        password=r_pass)
+    
+    try:
+        for item in ingredient_list:
+            ing_key = item[0]
+            ing_value = int(item[1])
+
+            # temporary fix for Chicken Breas extra space in the key in Redis
+            if ing_key == 'Chicken Breast':
+                ing_key = 'Chicken Breast '
+
+            redis_value = r.get(ing_key)
+            # converting JSON string to Dictionary
+            json_data = json.loads(redis_value)
+            current_value = float(json_data['quantity'])
+            new_value = current_value - ing_value
+            json_data['quantity'] = str(new_value)
+            # convert dictionary back to JSON string
+            new_value_str = json.dumps(json_data)
+            # Save updated value back to Redis
+            r.set(ing_key, new_value_str)
+    except Exception as e:
+        st.text(e)
+    
+    keys = r.keys()
+    values = r.mget(keys)
+
+    data = {}
+
+    for key, value in zip(keys, values):
+        data[f"{key.decode()}"] = f"{value.decode()}"
+
+    st.text('show updated data from Redis')
+    st.text(data)
+    
+    
+
 
 st.image("./assets/dalle_cover_lynx.png", use_column_width=True)
 st.title("🤖 AI Chef")
@@ -91,7 +132,7 @@ def recipe_generator(data, cuisine, nutrition, portion, prep_time):
         model="text-davinci-003",
         prompt=f"Create a recipe and cooking steps based on the items in this json file {data} in {cuisine} cuisine style, with {nutrition} nutrition target in mind. The recipe should be for {portion} persons, only one portion per person and within {prep_time} minutes of preparation and cooking time. Don't use all the ingredients and use the best possible combination economically. give the oil, spices, salt or chillies in minimal amount. provide the total calorie count of the meal per portion. the output should be a dictionary named {user_id}. there should be four keys, 'recipe_name', 'ingredients','cooking_steps' and 'calorie_count'. give 'ingredients' as a list ['ingredient','quantity' ,'unit'], 'cooking_steps' key should be a list of the cooking steps, 'calorie_count' key will have just the calorie value per person.",
         temperature=0.7,
-        max_tokens=750,
+        max_tokens=1000,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0
@@ -136,6 +177,9 @@ if cook:
             steps_pretty += f"- {step}\n"
 
         st.markdown(f"{steps_pretty}\n")
+
+        # after the action of accepting the cooking step, we need to update the data in redis
+        subtruct_ingredients(ingredients)
 
     except Exception as e:
         st.text('An Exception occured: ', e)
