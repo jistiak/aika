@@ -50,12 +50,13 @@ def redis_call(host, port, password):
 
     return data
 
+
 def subtruct_ingredients(ingredient_list):
     r = redis.Redis(
         host=r_host,
         port=r_port,
         password=r_pass)
-    
+
     try:
         for item in ingredient_list:
             ing_key = item[0]
@@ -77,7 +78,7 @@ def subtruct_ingredients(ingredient_list):
             r.set(ing_key, new_value_str)
     except Exception as e:
         st.text(e)
-    
+
     keys = r.keys()
     values = r.mget(keys)
 
@@ -86,9 +87,7 @@ def subtruct_ingredients(ingredient_list):
     for key, value in zip(keys, values):
         data[f"{key.decode()}"] = f"{value.decode()}"
 
-    return(data)
-    
-    
+    return (data)
 
 
 st.image("./assets/dalle_cover_lynx.png", use_column_width=True)
@@ -104,8 +103,8 @@ if not OPENAI_API_KEY:
 cuisine = st.sidebar.selectbox('Type of Cuisine',
                                ["Random", "Chinese", "French", "Greek", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Middle Eastern", "Spanish", "Thai"])
 
-nutrition = st.sidebar.selectbox('Nutrition Target',
-                                 ["Any", "Weight Loss", "Balanced", "Muscle Gain", "Cheat Day Meal"])
+diet = st.sidebar.selectbox('Type of Diet',
+                            ["Any", "Weight Loss", "Balanced", "Muscle Gain"])
 
 portion = st.sidebar.select_slider('Number of Portions/People',
                                    options=[1, 2, 3, 4, 5, "custom"])
@@ -125,11 +124,11 @@ openai.api_key = OPENAI_API_KEY
 
 
 @st.cache_data
-def recipe_generator(data, cuisine, nutrition, portion, prep_time):
+def recipe_generator(data, cuisine, diet, portion, prep_time):
     response = openai.Completion.create(
         # model="text-ada-001",
         model="text-davinci-003",
-        prompt=f"Create a recipe and cooking steps based on the items in this json file {data} in {cuisine} cuisine style, with {nutrition} nutrition target in mind. The recipe should be for {portion} persons, only one portion per person and within {prep_time} minutes of preparation and cooking time. Don't use all the ingredients and use the best possible combination economically. give the oil, spices, salt or chillies in minimal amount. provide the total calorie count of the meal per portion. the output should be a dictionary named {user_id}. there should be four keys, 'recipe_name', 'ingredients','cooking_steps' and 'calorie_count'. give 'ingredients' as a list ['ingredient','quantity' ,'unit'], 'cooking_steps' key should be a list of the cooking steps, 'calorie_count' key will have just the calorie value per person.",
+        prompt=f"Create a recipe and cooking steps based on the items in this json file {data} in {cuisine} cuisine style, for a person on {diet} diet plan in mind. The recipe should be for {portion} persons, only one portion per person and within {prep_time} minutes of preparation and cooking time. Don't use all the ingredients and use the best possible combination economically. give the oil, spices, salt or chillies in minimal amount. provide the total calorie count of the meal per portion. the output should be a dictionary named {user_id}. there should be four keys, 'recipe_name', 'ingredients','cooking_steps' and 'calorie_count'. give 'ingredients' as a list ['ingredient','quantity' ,'unit'], 'cooking_steps' key should be a list of the cooking steps, 'calorie_count' key will have just the calorie value per person.",
         temperature=0.7,
         max_tokens=1000,
         top_p=1,
@@ -150,7 +149,7 @@ def is_valid_json(myjson):
 cook = st.sidebar.button('Give me something to Cook!', key='cook')
 
 if cook:
-    raw_output = recipe_generator(data, cuisine, nutrition, portion, prep_time)
+    raw_output = recipe_generator(data, cuisine, diet, portion, prep_time)
     recipe = raw_output['choices'][0]['text']
     recipe = recipe.replace("'", "\"")
 
