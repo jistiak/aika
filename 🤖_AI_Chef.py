@@ -86,8 +86,7 @@ def subtruct_ingredients(ingredient_list):
     for key, value in zip(keys, values):
         data[f"{key.decode()}"] = f"{value.decode()}"
 
-    st.text('show updated data from Redis')
-    st.text(data)
+    return(data)
     
     
 
