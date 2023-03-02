@@ -1,4 +1,4 @@
-## AI Cook
+## AIKA
 
 ### Introduction 
 We have developed an AI-powered solution to streamline grocery shopping and cooking, with the aim of making meal preparation both more efficient and higher in quality. Our application allows users to track their grocery inventory and consumption trends, and offers recipe suggestions based on their preferences and needs.
