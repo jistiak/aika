@@ -75,16 +75,15 @@ with open('assets/grocery_set.txt', 'w') as f:
 
 # Check for missing items and generate a markdown checklist
 missing_items = []
-for item in index_set:
-    for idx in df.index:
-        if item != idx.lower():
-            missing_items.append(item)
+for idx in df.index:
+    if idx.lower() not in index_set:
+        missing_items.append(idx.lower())
 
 missing_items = list(set(missing_items))
 
 if missing_items:
     st.subheader("Items to buy:")
     for item in missing_items:
-        st.markdown(f" - [ ] {item.title()}")
+        st.markdown(f" - [ ]  {item.title()}")
 else:
     st.markdown("No items to buy.")
