@@ -21,6 +21,20 @@ We have built a solution to make grocery shopping and cooking more efficient wit
 6. The application will also be able to notify the user when it is time to go shopping again. It can also generate a list of grocery items that are running low in the inventory. 
 
 
+### Features: 
+
+1. Shopping list extraction
+2. Save item and quantity in a Redis database   
+3. Generate Prompt for Open AI API:
+        a. All kitchen items available → keeping the track in Redis, generating prompt from taking the data from Redis and tracking the last activity
+        b. Type of cuisine (possible)
+        c. Nutrition value (healthy or tasty or balanced)
+        d. Number of portion (sudden guest)
+        e. Vacation/Weekday/Busy Day → Preparation time for using in prompt
+4. Accept the recipe or Not
+5. Keeping the record of used recipe on redis and update the ingredients available
+6. Auto generate Shopping list after each meal prep
+
 
 
 Cooking dish suggestions from an image of Grocery Cash memo and stored food. Dish suggestions according to user needs. 
@@ -34,21 +48,6 @@ Challenges:
 
 Questions/Issues:
     1.  
-
-
-Features: 
-1. Shopping list extraction
-2. Save item and quantity in database (Redis)  
-3. Generate Prompt for Open AI API:
-        a. All kitchen items available → keeping the track in Redis, generating prompt from taking the data from Redis and tracking the last activity
-        b. Type of cuisine (possible)
-        c. Nutrition value (healthy or tasty or balanced)
-        d. Number of portion (sudden guest)
-        e. Vacation/Weekday/Busy Day → Preparation time for using in prompt
-4. Accept the recipe or Not
-5. Keeping the record of used recipe on redis and update the ingredients available
-6. Auto generate Shopping list after each meal prep
-
 
 ## OpenAI Stack Hack
 This project was built for OpenAI Stack Hack (Create Applications Using Generative AI!) which was held from 24th February to 3rd March 2023. 
