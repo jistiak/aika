@@ -6,7 +6,7 @@ We have built a solution to make grocery shopping and cooking more efficient wit
 
 ## Details of the project: 
 
-### User Inputs: 
+### User Inputs (AI Chef): 
 
 1. The user will first scan the cash memo       obtained by shopping at a grocery store. The items from the memo will be added to the inventory list as data.  
 
@@ -19,6 +19,9 @@ We have built a solution to make grocery shopping and cooking more efficient wit
 5. The application will save the recipes that the user cooks for future reference.
 
 6. The application will also be able to notify the user when it is time to go shopping again. It can also generate a list of grocery items that are running low in the inventory. 
+
+
+
 
 Cooking dish suggestions from an image of Grocery Cash memo and stored food. Dish suggestions according to user needs. 
 
