@@ -1,4 +1,7 @@
-# lynx_ai
+## AI Cook
+We build a solution to maintain grocery and cooking more efficiently with the help of AI. The project goal is to save time as well as assist in quality meal prep. The user will also be able to track his/her grocery inventory and consumption trend. 
+
+
 
 Cooking dish suggestions from an image of Grocery Cash memo and stored food. Dish suggestions according to user needs. 
 
