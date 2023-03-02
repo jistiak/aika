@@ -9,7 +9,7 @@ import os
 st.set_page_config(page_title="Smart Shopping List", page_icon="🛒")
 
 
-st.title("3 🛒 Smart Shopping List")
+st.title("🛒 Smart Shopping List")
 
 load_dotenv()
 r_host = os.environ.get('RD_HOST')
@@ -76,12 +76,12 @@ with open('assets/grocery_set.txt', 'w') as f:
 # Check for missing items and generate a markdown checklist
 missing_items = []
 for item in index_set:
-    if item not in df.index:
+    if item not in df.index.lower():
         missing_items.append(item)
 
 if missing_items:
     st.subheader("Items to buy:")
     for item in missing_items:
-        st.markdown(f"- [ ] {item.title()}")
+        st.markdown(f" - [ ] {item.title()}")
 else:
     st.markdown("No items to buy.")
