@@ -6,7 +6,7 @@ We have built a solution to make grocery shopping and cooking more efficient wit
 
 ## Details of the project: 
 
-### User Inputs (AI Chef): 
+### AI Chef UI: 
 
 1. The user will first scan the cash memo       obtained by shopping at a grocery store. The items from the memo will be added to the inventory list as data.  
 
@@ -24,30 +24,12 @@ We have built a solution to make grocery shopping and cooking more efficient wit
 ### Features: 
 
 1. Shopping list extraction
-2. Save item and quantity in a Redis database   
-3. Generate Prompt for Open AI API:
-        a. All kitchen items available → keeping the track in Redis, generating prompt from taking the data from Redis and tracking the last activity
-        b. Type of cuisine (possible)
-        c. Nutrition value (healthy or tasty or balanced)
-        d. Number of portion (sudden guest)
-        e. Vacation/Weekday/Busy Day → Preparation time for using in prompt
-4. Accept the recipe or Not
-5. Keeping the record of used recipe on redis and update the ingredients available
-6. Auto generate Shopping list after each meal prep
+2. Save grocery item and quantity in a Redis database   
+3. Generate Prompt for OpenAI API:
+4. User may Accept or Decline the recipe
+5. Keeping the record of used grocery items and update the inventory available
+6. Generate Shopping list
 
-
-
-Cooking dish suggestions from an image of Grocery Cash memo and stored food. Dish suggestions according to user needs. 
-
-Advantage: 
-    1. Pinpoint advertisement 
-
-
-Challenges:
-    1. Data
-
-Questions/Issues:
-    1.  
 
 ## OpenAI Stack Hack
 This project was built for OpenAI Stack Hack (Create Applications Using Generative AI!) which was held from 24th February to 3rd March 2023. 
