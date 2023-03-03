@@ -100,7 +100,7 @@ def list_generator(recipes, df):
     response = openai.Completion.create(
         # model="text-ada-001",
         model="text-davinci-003",
-        prompt=f"A person likes these recipes in this list {recipes}, he has these items {set(df.index)} in his home. What other items he may need to buy the next time he goes to the grocery store? Give me a list of the items as markdown. Do not add too many items. only the one he does not have in his home and the most essential items he might need beside those.",
+        prompt=f"A person likes these recipes in this list {recipes}, he has these items {set(df.index)} in his home. What other items he may need to buy the next time he goes to the grocery store? Give me a the items as a markdown list. Do not add too many items. only the one he does not have in his home and the most essential items he might need beside those.",
         temperature=0.7,
         max_tokens=512,
         top_p=1,

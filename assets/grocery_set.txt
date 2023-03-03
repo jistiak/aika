@@ -1,5 +1,5 @@
-tuna
 chilli powder
+tuna
 cooking oil
 chicken breast
 olive oil
@@ -41,8 +41,8 @@ chicken
 salt
 tomato puree
 flour
-kidney beans
 potatoes
+kidney beans
 garlic
 mushroom
 mushroom
