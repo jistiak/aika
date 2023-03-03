@@ -1,9 +1,9 @@
 current items,quantity,unit
-Rice ,1,Kilogram
+Rice,1,Kilogram
 Eggs,10,Piece
 Musli,2,Kilogram
 Durum,8,piece
-Chicken ,1,Kilogram
+Chicken,1,Kilogram
 Tomato puree,250,Gram
 Mushroom,250,Gram
 Kidney Beans,250,Gram
@@ -13,7 +13,7 @@ Tomato,1,Kilogram
 Butter,500,Gram
 Milk,2,Litre
 Cheese,500,Gram
-Potatoes ,2,Kilogram
+Potatoes,2,Kilogram
 Onion,1,Kilogram
 Flour,500,Gram
 Salt,250,Gram
@@ -21,11 +21,11 @@ Cooking Oil,500,MilliLitre
 Chilli powder,100,Gram
 Turmeric powder,100,Gram
 Garam Masala,100,Gram
-Garlic ,250,Gram
+Garlic,250,Gram
 Garlic Paste,500,Gram
 Ginger Paste,500,Gram
 Olive Oil,500,MilliLitre
 Tuna,250,Gram
-Chicken Breast ,500,Gram
-Sausage ,5,Piece
-Bread ,5,Piece
+Chicken Breast,500,Gram
+Sausage,5,Piece
+Bread,5,Piece

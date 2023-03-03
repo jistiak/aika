@@ -177,7 +177,7 @@ def cook():
         # after the action of accepting the cooking step, we need to update the data in redis
         # subtruct_ingredients(ingredients)
 
-        return recipe
+        # return recipe
 
     except Exception as e:
         # st.text('An Exception occured: ', e)

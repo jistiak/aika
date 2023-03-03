@@ -1,6 +1,6 @@
-categories = {
+{
         'Bakery': ['durum', 'salt', 'sugar', 'bread'],
-        'Canned goods': ['tomato puree','kidney beans', 'mushroom', ],
+        'Canned goods': ['tomato puree','kidney beans', 'mushroom'],
         'Dairy': ['butter', 'cheese', 'egg', 'eggs', 'milk', 'yogurt'],
         'Fish': ['salmon', 'tuna'],
         'Fruits': ['apple', 'orange', 'tangerine'],

@@ -21,9 +21,9 @@ with open("./assets/recipes.txt", "r") as f:
 data = data.replace("'", "\"").strip()
 list_of_json = data.split('\n\n')
 
-recipe_list, recipe = st.columns([1, 3])
+col1, col2 = st.columns([1, 2])
 
-recipe_list.subheader('Recipe List')
+col1.subheader('Recipe List')
 
 
 recipes = []
@@ -32,26 +32,46 @@ for j in list_of_json:
     d = json.loads(j)
     recipes.append(d['recipe_name'])
 
-which_recipe = st.radio(
+which_recipe = col1.radio(
     "Pick any of the recipes you saved",
     recipes)
 
 
-recipe.subheader(which_recipe)
+col2.subheader(which_recipe)
 
-prompt = "a guy with rough hair and short beard, wearing a hoody, sitting alone in the woods with his dog and working on his macbook with glowing apple logo. it's night time and full of stars and moon light. give a side view of the guy, not whole face. the photo is taken from a bit far away, like 5-10 meters."
+# prompt = ""
 
-OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+# OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 
 
-response = openai.Image.create(
+# response = openai.Image.create(
 
-    prompt=prompt,
+#     prompt=prompt,
 
-    n=1,
+#     n=1,
 
-    size="512x512",
+#     size="512x512",
 
-)
+# )
 
-st.text(response["data"][0]["url"])
+# st.text(response["data"][0]["url"])
+
+col2.subheader("Ingredients:\n")
+
+
+ingredients = json.loads(list_of_json[recipes.index(which_recipe)])[
+    'ingredients']
+
+ingredients_list = ""
+for item in ingredients:
+    ingredients_list += f"* {item[0]}: {item[1]} {item[2]}\n"
+col2.markdown(f"{ingredients_list}\n")
+
+col2.subheader("Cooking Steps:\n")
+
+
+steps_pretty = ""
+for step in json.loads(list_of_json[recipes.index(which_recipe)])['cooking_steps']:
+    steps_pretty += f"- {step}\n"
+
+col2.markdown(f"{steps_pretty}\n")
