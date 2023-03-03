@@ -6,6 +6,10 @@ Are you tired of the same old meal planning routine that leaves you feeling unin
 
 Imagine being able to take a quick photo of your grocery receipt or inputting your inventory manually and having **AIKA** do the rest. The app learns your usage patterns and creates customized shopping lists and recipe suggestions that fit your lifestyle. And with the ability to save your favorite recipes in a beautifully-designed blog-style interface, you'll have access to meal ideas that are both tasty and visually appealing.
 
+## OpenAI Stack Hack
+This project was developed for the OpenAI Stack Hack, a hackathon that challenges participants to create innovative applications using generative AI. The hackathon took place from February 24th to March 3rd, 2023. 
+
+For more information on our project, please refer to our pitch presentation using the link provided.
 Whether you're a student on a budget, a busy professional, or a weekend commuter, **AIKA** is the kitchen management app you never knew you needed. It's the perfect solution for anyone who wants to simplify their meal planning routine, reduce food waste, and save time and money in the kitchen.
 
 ## Key Features
