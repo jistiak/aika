@@ -146,9 +146,7 @@ def is_valid_json(myjson):
     return True
 
 
-cook = st.sidebar.button('Give me something to Cook!', key='cook')
-
-if cook:
+def cook():
     raw_output = recipe_generator(data, cuisine, diet, portion, prep_time)
     recipe = raw_output['choices'][0]['text']
     recipe = recipe.replace("'", "\"")
@@ -177,8 +175,65 @@ if cook:
         st.markdown(f"{steps_pretty}\n")
 
         # after the action of accepting the cooking step, we need to update the data in redis
-        subtruct_ingredients(ingredients)
+        # subtruct_ingredients(ingredients)
+
+        return recipe
 
     except Exception as e:
-        st.text('An Exception occured: ', e)
+        # st.text('An Exception occured: ', e)
         st.text(recipe.split(' = ')[1])
+
+        # return recipe.split(' = ')[1]
+
+
+# if 'recipe' not in st.session_state:
+#     st.sidebar.button('Give me something to Cook!', key='cook')
+# else:
+#     st.write(st.session_state['recipe'])
+#     c1, c2 = st.columns(2)
+
+#     if c1.button("Save Recipe"):
+#         recipe = cook()
+#         with open(f"./assets/recipes/{recipe['recipe_name'].lower()}.txt", "w") as r:
+#             r.write(f"Recipe Name: {recipe['recipe_name']}\n")
+#             r.write(f"Calorie Count: {recipe['calorie_count']}\n")
+#             r.write(f"Ingredients: \n{ingredients_list}\n")
+#             r.write(f"Cooking Steps: \n{steps_pretty}\n")
+#         st.success("Recipe Saved!")
+
+#     if st.button('I want something else'):
+#         # Rerun the task and update the session state
+#         st.session_state['recipe'] = cook()
+
+# if st.sidebar.button('Clear All'):
+#     # Clear the session state
+#     st.session_state.pop('recipe', None)
+
+
+# Create a session state object
+if 'output' not in st.session_state:
+    st.session_state.key = None
+# Define a function to run the long-running task and update the session state
+
+
+def run_task():
+    st.session_state.output = cook()
+
+# Define a function to save the output to a file
+
+
+def save_output():
+    if st.session_state.output:
+        with open("./assets/recipes.txt", "a") as f:
+            json.dump(st.session_state.output, f)
+            f.write("\n\n")
+
+
+# Create a button to run the task
+if st.sidebar.button("Run task"):
+    run_task()
+    st.write(st.session_state.output)
+
+# Create a button to save the output
+if st.button("Save output"):
+    save_output()

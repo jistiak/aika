@@ -63,7 +63,7 @@ def redis2df(redis_json):
 
 df = redis2df(data)
 
-st.dataframe(df)
+# st.dataframe(df)
 
 
 def categorize(categories, grocery_data):
@@ -83,6 +83,7 @@ def categorize(categories, grocery_data):
 
 categorized_list = categorize(categories, df)
 
+<<<<<<< HEAD
 def lower_case(dataframe):
     def lower_case_string(s):
         if isinstance(s, str):
@@ -92,6 +93,9 @@ def lower_case(dataframe):
     return dataframe.applymap(lower_case_string)
 
 categorized_list_lowered = lower_case(categorized_list)
+=======
+# st.dataframe(categorize(categories, df))
+>>>>>>> c4f79e1 (intermediate updates)
 
 
 def unit_conversion(dataFrame):
