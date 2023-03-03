@@ -1,0 +1,11 @@
+ colors = {'Bakery': 'rgb(31, 119, 180)', 
+              'Canned goods': 'rgb(255, 127, 14)', 
+              'Dairy': 'rgb(44, 160, 44)', 
+              'Fish': 'rgb(214, 39, 40)', 
+              'Fruits': 'rgb(148, 103, 189)', 
+              'Grains': 'rgb(140, 86, 75)', 
+              'Meat': 'rgb(227, 119, 194)', 
+              'Oil': 'rgb(127, 127, 127)', 
+              'Spices': 'rgb(188, 189, 34)', 
+              'Vegetables': 'rgb(23, 190, 207)'
+              }
