@@ -95,12 +95,12 @@ for j in list_of_json:
     recipes.append(d['recipe_name'])
 
 
-@st.cache_data
-def list_generator(recipes, df):
+# @st.cache_data
+def list_generator(recipes, df, missing_items):
     response = openai.Completion.create(
         # model="text-ada-001",
         model="text-davinci-003",
-        prompt=f"A person likes these recipes in this list {recipes}, he has these items {set(df.index)} in his home. What other items he may need to buy the next time he goes to the grocery store? Give me a the items as a markdown list. Do not add too many items. only the one he does not have in his home and the most essential items he might need beside those.",
+        prompt=f"A person likes these recipes in this list {recipes}, he has these items {set(df.index)} in his home. These items {missing_items} were in his home but now finished. What other items he may need to buy the next time he goes to the grocery store? Give me a the items as a markdown list. Do not add too many items. only the one he does not have in his home and the most essential items he might need beside those.",
         temperature=0.7,
         max_tokens=512,
         top_p=1,
@@ -118,7 +118,7 @@ st.subheader("Items to buy:")
 #         st.markdown(f"- {item.title()}")
 # else:
 #     st.markdown("No items to buy.")
-raw_output = list_generator(recipes, df)
+raw_output = list_generator(recipes, df, missing_items)
 # missing_items[0:0] = raw_output['choices'][0]['text']
 
 # list_string = "\n".join([f"- {i}" for i in raw_output['choices'][0]['text']])
