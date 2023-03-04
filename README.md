@@ -56,6 +56,6 @@ OpenAI Dall-E is a neural network-based image generation API that can generate i
 
 AIKA is being developed as part of the **OpenAI Stack Hack**, organized by [Lablab.ai](Lablab.ai), a hackathon that challenges participants to create innovative applications using generative AI. The hackathon took place from February 24th to March 3rd, 2023. You can learn more about the hackathon [here](https://lablab.ai/event/openai-hackathon).
 
-For more information on our project, please refer to our pitch presentation using the link provided.
+For more information on our project, please refer to our pitch presentation using the [link](https://drive.google.com/file/d/1pecA8TPSXEVHKlRBwuqRf6yg8Vwh9auI/view?usp=share_link) provided.
 
 Feel free to reach out to us for any feedback or suggestions!
