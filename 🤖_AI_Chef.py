@@ -230,7 +230,7 @@ def save_output():
 
 
 # Create a button to run the task
-if st.sidebar.button("Run task"):
+if st.sidebar.button("Give me something to Cook!"):
     run_task()
     st.write(st.session_state.output)
 
