@@ -4,6 +4,7 @@ import json
 import pandas as pd
 import redis
 import os
+import openai
 
 
 st.set_page_config(page_title="Smart Shopping List", page_icon="🛒")
@@ -56,7 +57,6 @@ def redis2df(redis_json):
 df = redis2df(data)
 
 
-
 # Load the existing index set from a text file
 try:
     with open('assets/grocery_set.txt', 'r') as f:
@@ -81,9 +81,55 @@ for idx in df.index:
 
 missing_items = list(set(missing_items))
 
-if missing_items:
-    st.subheader("Items to buy:")
-    for item in missing_items:
-        st.markdown(f" - [ ]  {item.title()}")
-else:
-    st.markdown("No items to buy.")
+
+with open("./assets/recipes.txt", "r") as f:
+    data = f.read()
+
+data = data.replace("'", "\"").strip()
+list_of_json = data.split('\n\n')
+
+recipes = []
+
+for j in list_of_json:
+    d = json.loads(j)
+    recipes.append(d['recipe_name'])
+
+
+@st.cache_data
+def list_generator(recipes, df):
+    response = openai.Completion.create(
+        # model="text-ada-001",
+        model="text-davinci-003",
+        prompt=f"A person likes these recipes in this list {recipes}, he has these items {set(df.index)} in his home. What other items he may need to buy the next time he goes to the grocery store? Give me a the items as a markdown list. Do not add too many items. only the one he does not have in his home and the most essential items he might need beside those.",
+        temperature=0.7,
+        max_tokens=512,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+    )
+    return response
+
+
+st.subheader("Items to buy:")
+
+
+# if missing_items:
+#     for item in missing_items:
+#         st.markdown(f"- {item.title()}")
+# else:
+#     st.markdown("No items to buy.")
+raw_output = list_generator(recipes, df)
+# missing_items[0:0] = raw_output['choices'][0]['text']
+
+# list_string = "\n".join([f"- {i}" for i in raw_output['choices'][0]['text']])
+
+# markdown_string = f"### Ingredients:\n\n{list_string}"
+
+st.markdown(raw_output['choices'][0]['text'])
+
+with st.form("my_form", clear_on_submit=True):
+    st.write("Add new items")
+    item = st.text_input("Item Name")
+
+    # Every form must have a submit button.
+    submitted = st.form_submit_button("Submit")
