@@ -235,5 +235,6 @@ if st.sidebar.button("Run task"):
     st.write(st.session_state.output)
 
 # Create a button to save the output
-if st.button("Save output"):
+if st.button("Save Recipe!"):
     save_output()
+    st.success("Recipe Saved 😀")
