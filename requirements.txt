@@ -3,6 +3,6 @@ openai==0.26.5
 pandas==1.5.3
 python-dotenv==1.0.0
 redis==4.5.4
-streamlit==1.18.1
+streamlit==1.30.0
 plotly==5.13.1
 plotly-express==0.4.1 
